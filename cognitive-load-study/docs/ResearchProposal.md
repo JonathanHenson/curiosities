@@ -1,7 +1,7 @@
 # Cognitive Load in Programming Language Constructs: A Web-Based Experimental Study
 
 **Authors:**  
-Jonathan M. Henson, Principal Engineer, AWS
+Jonathan M. Henson
 
 **Additional Contributors and Acknowledgements:**  
 Every member of our species across time that has produced enough information to nudge the weights of Claude 3.7 Sonnet

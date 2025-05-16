@@ -39,3 +39,54 @@ yarn-error.log*
 # Logs
 logs
 *.log
+
+# Python specific
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Python virtual environments
+venv/
+env/
+ENV/
+.venv/
+env.bak/
+venv.bak/
+.python-version
+
+# Data and output files
+/output/
+*.pkl
+*.h5
+*.npy
+*.npz
+
+# Jupyter notebooks
+.ipynb_checkpoints
+*.ipynb
+
+# Analysis outputs
+/plots/
+*.png
+*.jpg
+*.pdf

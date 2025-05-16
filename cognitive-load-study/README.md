@@ -141,8 +141,6 @@ This study will provide empirical evidence to:
 - Laboratory conditions differ from authentic programming environments
 - Web-based timing measurements may have lower precision than specialized laboratory equipment
 
-## 9. Ethics Statement
-Participation will be voluntary. No personally identifiable information will be collected. Participants may withdraw at any time without consequence. This study follows ethical guidelines for human-computer interaction research.
 
 ## References
 Ajami, S., Woodbridge, Y., & Feitelson, D. G. (2019). Syntax, predicates, idioms – what really affects code complexity? *Empirical Software Engineering*, 24(1), 287-328.

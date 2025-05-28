@@ -28,7 +28,7 @@ Just as language models trained on different cultural corpora create different e
 cultural-bridge-finder/
 │
 ├── README.md                     # This file
-├── prompt.md                     # The main prompt for the AI assistant
+├── main-prompt.md                     # The main prompt for the AI assistant
 ├── methodology.md                # Detailed explanation of the analytical approach
 │
 ├── samples/                      # Example interactions

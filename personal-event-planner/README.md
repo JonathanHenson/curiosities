@@ -16,20 +16,30 @@ The assistant will inform you if any capabilities are missing and which features
 
 ## Quick Start
 
-1. **Give your AI assistant the PROMPT.md file** as its system instructions
-2. **Upload the knowledge_base folder** to your AI assistant
+1. **Upload the knowledge_base folder** to your AI assistant FIRST
+2. **Then give your AI assistant the PROMPT.md** as its system instructions
 3. **Start with:** "Hi, I'd like to set up my profile" or just ask "What should I do today?"
 4. The assistant will guide you through creating your personal profile
 5. As you use it, ask "Show me updates" to get any new information to add to your knowledge base
 
+### Updating Your Knowledge Base
+
+For Claude Projects and similar systems where you can't edit files directly:
+1. Ask the bot to "Show me updates" 
+2. Copy the complete file contents shown
+3. Update your local files with the new content
+4. Re-upload the entire knowledge_base folder to your AI assistant
+5. The updated information will be available in your next conversation
+
 ## Key Features
 
 - **Smart Activity Recommendations**: Finds events and activities matching your interests
-- **Calendar Integration**: Checks for conflicts and helps schedule events
+- **Calendar Integration**: Creates properly formatted events with all details
 - **Group Coordination**: Plans activities considering everyone's preferences
 - **Transit-Aware**: Suggests venues based on how you like to get around
 - **Dietary Accommodations**: Always considers food restrictions and preferences
 - **Multi-Activity Planning**: Chain together dinner, movie, drinks, etc.
+- **Custom Interest Profiles**: Create your own beyond the defaults
 
 ## Basic Commands
 
@@ -38,7 +48,45 @@ The assistant will inform you if any capabilities are missing and which features
 - `"I'm with [Name]"` - Plan activities for multiple people
 - `"Plan dinner and a movie with [Name]"` - Multi-activity planning
 - `"Show me updates"` - See what to add to your knowledge base
-- `"Add [Name] to my contacts"` - Build your social network
+- `"My friend Sam likes..."` - Add new people naturally
+- `"Create a CRAFT_BEER interest profile"` - Make custom interests
+
+## Profile Management
+
+### Simple Names
+The system uses whatever name you provide:
+- "Sam" → creates SAM.yaml
+- "Sam Smith" → creates SAM_SMITH.yaml  
+- Both work perfectly fine
+- No last name required
+
+### Handling Duplicates
+If you know multiple people with the same first name:
+```
+You: "I'm meeting Alex"
+Bot: "Which Alex - your coworker who's vegetarian, or your cousin who loves sushi?"
+```
+
+## How Profile Components Connect
+
+### Profile Relationships:
+1. **Settings → Personal Profile**: `DEFAULT_USER: ALEX` means when you say "I/me/my", the system looks for ALEX.yaml
+2. **Relationship Mapping**: `"my partner": DAVID` means "my partner" refers to DAVID.yaml
+3. **Personal → Interest Profiles**: `Active_Interest_Profiles: [FOODIE, ADVENTURER]` links to those interest files
+4. **Groups → Personal Profiles**: `Members: [ALEX, SARAH, MARCUS]` references those personal profiles
+5. **Combined Restrictions**: Groups inherit ALL dietary/accessibility needs from members
+
+### How It Works in Practice:
+```
+You: "I'm with Sarah"
+System:
+1. Loads your profile (DEFAULT_USER)
+2. Loads Sarah's profile
+3. Combines all dietary restrictions
+4. Finds overlapping interests
+5. Applies most restrictive transportation/schedule constraints
+6. Suggests activities that work for BOTH
+```
 
 ## Example Conversations
 
@@ -50,241 +98,268 @@ Bot: "Great! Let's set up your profile. What should I call you?"
 
 You: "I'm Alex"
 
-Bot: "Nice to meet you, Alex! Tell me about your interests - what do you enjoy doing in your free time?"
+Bot: "Nice to meet you, Alex! Tell me about your interests - what do you enjoy doing?"
 
 You: "I love trying new restaurants, hiking on weekends, and going to art museums. I'm vegetarian and lactose intolerant. I usually take public transit or bike."
 
-Bot: "Perfect! I've created your profile with interests in food, outdoor adventures, and culture. 
-Here's what to save:
+Bot: "Perfect! I've created your profile. Here's what to save:
 
-📁 CREATE NEW FILE: `/profiles/settings/DEFAULT_USER.yaml`
-[Shows complete file content to copy]
+📁 CREATE NEW FILE: /profiles/settings/DEFAULT_USER.yaml
 
-📁 CREATE NEW FILE: `/profiles/personal/ALEX_CHEN.yaml`
-[Shows complete profile with all preferences]"
+```yaml
+Default_User: ALEX
 ```
 
-### 🍽️ Quick Activity Request
+📁 CREATE NEW FILE: /profiles/personal/ALEX.yaml
+
+```yaml
+Profile_Name: "ALEX"
+Full_Name: "Alex"
+Active_Interest_Profiles: [FOODIE, ADVENTURER, CULTURE_ENTHUSIAST]
+
+Dietary_Restrictions:
+  Type: vegetarian
+  Medical_Conditions: lactose intolerant
+
+Transportation_Preferences:
+  Preferred: "public transit, bike"
+  
+Notes: "Enjoys new restaurants, weekend hiking, art museums"
+```
+
+**🍽️ Quick Activity Request**
 ```
 You: "I'm hungry but only have an hour"
 
-Bot: "Here are quick lunch spots near you that fit your dietary needs:
+Bot: "Here are quick lunch spots near you:
 
-1. **Green Garden Café** - 10 min walk
-   - Excellent vegetarian options, clearly marked dairy-free items
-   - Counter service, usually fast (30-45 min total)
-   - Their Buddha bowl is amazing and filling
+**Green Garden Café** - 10 min walk
+- Great vegetarian options, dairy-free clearly marked
+- Counter service, usually quick (30-45 min total)
 
-2. **Noodle Express** - 5 min bike ride
-   - Vegetarian pho and rice noodle dishes
-   - Ask for no egg in the veggie dishes
-   - Quick service, perfect for your time constraint"
+**Noodle Express** - 5 min bike ride
+- Vegetarian pho and rice noodles
+- Fast service, perfect for your time limit"
 ```
 
-### 👥 Planning with Friends
+**📅 Calendar Integration**
 ```
-You: "I want to plan something with Sarah and Marcus this weekend"
+You: "Add the hike with Sam to my calendar"
 
-Bot: "I'll plan for the three of you! Checking everyone's preferences...
+Bot: "Here's the calendar event details:
 
-⚠️ Dietary considerations:
-- You: Vegetarian, lactose intolerant
-- Sarah: No restrictions (but has 3 kids)
-- Marcus: No alcohol (in recovery)
+📅 **Event**: Morning Hike with Sam
+📍 **Location**: Eagle Trail Parking Lot, 123 Mountain Rd, Portland, OR 97210
+⏰ **Time**: Saturday March 16, 9:00 AM - 11:30 AM
 
-Since Sarah has kids, here are family-friendly weekend activities:
-
-1. **Saturday Morning: Farmers Market + Picnic**
-   - Kid-friendly with live music
-   - Tons of vegetarian food options
-   - Marcus loves the craft vendor section
-   - Plan for 10am-1pm
-
-2. **Sunday: Children's Museum**
-   - New interactive science exhibit
-   - Café has great vegetarian options
-   - No alcohol-focused environment ✓
-   - 2-4pm works well for kid schedules
-
-Should I check if these times work with everyone's calendars?"
-```
-
-### 🚊 Transit-Specific Planning
-```
-You: "I'm meeting Preston downtown but he only takes public transit"
-
-Bot: "Since Preston prefers trains, here are great spots near transit stations:
-
-1. **Union Station Food Hall** 
-   - ⭐ Preston can take any train line directly there
-   - You can bike (secure bike parking available)
-   - Multiple vegetarian vendors
-   - Great for lunch or early dinner
-
-2. **Arts District Gallery Row**
-   - 🚊 2 blocks from Metro Blue Line
-   - First Friday art walk is tonight!
-   - Several cafés with veg options nearby
-   - Preston mentioned loving local art"
-```
-
-### 📝 Adding New People
-```
-You: "My new coworker Jordan is vegan and really into yoga. They love quiet coffee shops."
-
-Bot: "I've created a profile for Jordan! Here's what to add to your knowledge base:
-
-📁 CREATE NEW FILE: `/profiles/personal/JORDAN_LASTNAME.yaml`
-
-Copy this entire content:
+For Google Calendar/Outlook:
 ```yaml
-Profile_Name: "JORDAN_LASTNAME"
-Full_Name: "Jordan [Lastname]"
-Active_Interest_Profiles: [WELLNESS_SEEKER, CULTURE_ENTHUSIAST]
+title: "Morning Hike with Sam"
+location: "Eagle Trail Parking Lot, 123 Mountain Rd, Portland, OR 97210"
+start_time: "2024-03-16T09:00:00-07:00"
+end_time: "2024-03-16T11:30:00-07:00"
+description: |
+  Trail: Eagle Loop (4 miles, moderate)
+  Bring: Water, snacks, sunscreen
+  Meeting: Sam at parking lot
+  Notes: Sam is vegan - pack appropriate snacks
+reminders: [60, 1440] # 1 hour and 1 day before
+```
+
+Or add manually with these details:
+```
+- Set reminder for 1 hour before
+- Note: Bring water and vegan snacks for Sam"
+```
+
+**👥 Adding People Naturally**
+```
+You: "My coworker Jordan is vegan and really into yoga"
+
+Bot: "I've created a profile for Jordan:
+
+📁 CREATE NEW FILE: `/profiles/personal/JORDAN.yaml`
+```yaml
+Profile_Name: "JORDAN"
+Full_Name: "Jordan"
+Active_Interest_Profiles: [WELLNESS_SEEKER]
 
 Dietary_Restrictions:
   Type: vegan
-  Coffee_Preferences: plant-based milk options
 
-Environment_Avoids:
-  Sensory: loud music, crowded spaces
-  Preferences: quiet, calm atmospheres
+Notes: "Coworker, enjoys yoga"
+Status: "basic profile - add contact info when available"
 
-Interests_Noted:
-  - Yoga and meditation
-  - Quiet coffee shops
-  - Wellness activities
-
-Relationship_To_User: "coworker"
-Status: "incomplete - need last name and contact info"
+Would you like to add Jordan's email or other details?"
 ```
 
-💡 I'll remember to suggest vegan-friendly yoga studios and calm cafés when you're planning with Jordan!"
+**🎫 Actionable Booking Help**
+```
+You: "I want to see the new Marvel movie with Pat"
+
+Bot: "**Marvel Movie: Quantum Realm**
+🎬 Playing at Downtown Cinema and Riverside 16
+
+⏰ Showtimes this evening:
+- Downtown: 7:00 PM, 9:45 PM
+- Riverside: 6:45 PM, 7:30 PM, 9:30 PM
+
+🎫 BOOK: Fandango.com or at theater
+💰 $15 evening shows
+🍿 Note: Pat loves popcorn but skip butter (dairy)
+
+The 7:30 PM at Riverside works well - gives you time for dinner first. Should I help plan dinner too?"
 ```
 
-### 📅 Multi-Activity Planning
+**🚊 Smart Transit Routing**
 ```
-You: "Plan a date night with David - dinner, movie, then maybe drinks"
+You: "I'm meeting Jordan for yoga, I'll be biking"
 
-Bot: "Perfect date night plan for you and David:
+Bot: "Great choice for biking! Here are yoga studios with good bike parking:
 
-**6:30 PM - Dinner at Botanica**
-- ⚠️ FIXED: Reservation needed (I can't book, but here's the number: 555-0123)
-- Amazing vegetarian tasting menu
-- David loves their wine selection
-- 90 minutes for relaxed dinner
+**Peaceful Flow Yoga**
+🚴 Covered bike racks right outside
+📍 423 Oak Street (15 min bike via River Path)
+🧘 Next vegan-friendly class: 6:30 PM
+💰 Drop-in: $20
 
-**8:30 PM - Movie: "Art House Film"**
-- ⚠️ FIXED: 8:45 PM showing at Independent Cinema
-- 15-min walk from restaurant through the park
-- Buy tickets now: [link]
-
-**11:00 PM - Nightcap Options**
-- ⚡ FLEXIBLE: Choose based on mood
-- **Wine Bar 52** - David's favorite, open til 1am
-- **Late Night Dessert** - Vegan ice cream shop til midnight
-
-Want me to create calendar events and send David the plan?"
+The River Path is beautiful this time of day and connects directly to Oak Street."
 ```
 
-### 🔄 Updating Information
+**🎨 Custom Interest Profiles**
 ```
-You: "Actually Marcus stopped drinking and Sarah just went gluten-free"
+You: "I want to create a profile for craft beer enthusiasts"
 
-Bot: "I've updated both profiles! Here are the changes:
+Bot: "I'll help you create a custom interest profile:
 
-📝 UPDATE FILE: `/profiles/personal/MARCUS_JOHNSON.yaml`
-[Shows complete updated profile with alcohol preferences changed]
+📁 CREATE NEW FILE: `/profiles/interests/CRAFT_BEER_ENTHUSIAST.yaml`
+```yaml
+Profile_Type: "Interest"
+Name: "CRAFT_BEER_ENTHUSIAST"
+Description: "Enjoys craft breweries, beer tastings, and brew culture"
 
-📝 UPDATE FILE: `/profiles/personal/SARAH_WILLIAMS.yaml`
-[Shows complete updated profile with gluten-free added to dietary restrictions]
+Interests:
+  - Brewery tours and tastings
+  - New brewery openings
+  - Beer festivals
+  - Brew-and-food pairings
+  - Homebrewing events
+  - Tap takeovers
 
-This will affect my recommendations - I'll now avoid bars for Marcus and ensure gluten-free options for Sarah."
+Preferred_Venues:
+  - Local microbreweries
+  - Craft beer bars
+  - Brewpubs with food
+  - Beer gardens
+
+Budget: "Moderate ($20-60)"
+Typical_Duration: "2-3 hours"
+Social_Style: "Good for groups or dates"
+
+
+Now you can assign this to people who love craft beer!"
 ```
 
-### 📊 Session Summary
+**🔄 Session Updates**
 ```
-You: "Show me all updates from today"
+You: "Show me updates"
 
-Bot: "Here's everything you need to update in your knowledge base:
+Bot: "Here's everything from our conversation:
 
-📊 SESSION SUMMARY - March 15, 2024
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 SESSION SUMMARY
+━━━━━━━━━━━━━━━━━━
 
-NEW PROFILES CREATED: 2
-1️⃣ `/profiles/personal/JORDAN_LASTNAME.yaml`
-2️⃣ `/profiles/personal/LISA_WONG.yaml`
+NEW PROFILES: 2
+1️⃣ `/profiles/personal/JORDAN.yaml` - vegan coworker who does yoga
+2️⃣ `/profiles/personal/PAT.yaml` - movie buddy, lactose issues
 
-PROFILES UPDATED: 3
-1️⃣ `/profiles/personal/MARCUS_JOHNSON.yaml` - removed alcohol
-2️⃣ `/profiles/personal/SARAH_WILLIAMS.yaml` - added gluten-free
-3️⃣ `/profiles/personal/PRESTON_TAYLOR.yaml` - updated email
+CUSTOM INTERESTS: 1
+1️⃣ `/profiles/interests/CRAFT_BEER_ENTHUSIAST.yaml`
 
-NEW GROUPS: 1
-1️⃣ `/profiles/groups/BOOK_CLUB.yaml`
+UPDATES: 1
+1️⃣ `/profiles/personal/SAM.yaml` - added hiking preferences
 
-Need me to show any specific update again?"
+ACTION ITEMS:
+□ Book movie tickets for 7:30 PM showing
+□ Get Jordan's email for yoga class invites
+□ Add craft beer interest to Marcus's profile
+
+Need me to show any of these files again?"
 ```
 
 ## How It Works
 
 The system uses YAML files to store:
-- **Personal Profiles**: Your preferences and those of your friends
-- **Interest Profiles**: Types of activities (Foodie, Adventurer, etc.)
+- **Personal Profiles**: Your preferences and those of your friends (using simple names)
+- **Interest Profiles**: Types of activities (default set + your custom ones)
 - **Group Profiles**: Common configurations of people you hang out with
 - **Settings**: Your default identity and relationship mappings
 
+### File Structure:
+```
+/knowledge_base/profiles/
+├── settings/
+│   ├── DEFAULT_USER.yaml (identifies who "I/me" refers to)
+│   └── DEFAULT_USER_TEMPLATE.yaml (template for new users)
+├── personal/
+│   └── [NAME].yaml (individual profiles like ALEX.yaml, SARAH.yaml)
+├── groups/
+│   └── [GROUP_NAME].yaml (predefined groups like BOOK_CLUB.yaml)
+└── interests/
+    └── [INTEREST_TYPE].yaml (FOODIE.yaml, ADVENTURER.yaml, etc.)
+```
+
+## Calendar Integration Details
+
+The assistant provides calendar events in standard formats:
+- **ISO 8601 timestamps** for accurate timezone handling
+- **Complete location addresses** for map integration
+- **Structured descriptions** with all relevant details
+- **Attendee emails** when available
+- **Reminder settings** (typically 1 hour and 1 day before)
+
 ## Tips for Best Results
 
-1. **Be natural**: Say "I'm vegetarian and hate loud places" rather than listing restrictions
-2. **Mention constraints**: "I have 2 hours" or "I prefer taking the train"
-3. **Build incrementally**: You don't need to add everything at once
-4. **Save updates**: When the bot shows you updates, copy them to keep your profiles current
-5. **Ask about capabilities**: "Do you have calendar access?" to understand what's available
+1. **Use natural language**: "I hate loud places" not "Environment_Avoids: loud"
+2. **Start simple**: Just a name and one fact is enough to begin
+3. **Build over time**: Add details as you learn them
+4. **Save your updates**: Always keep your knowledge base current
+5. **Create custom profiles**: Make interest profiles for your specific hobbies
 
 ## Privacy & Data
 
 - All profile data stays in your personal knowledge base
-- The assistant only knows what you tell it and what's in your uploaded files
-- You control all the information and can edit files directly
-- No data is shared or stored outside your conversation
+- The assistant only knows what you tell it
+- You control all information and can edit files directly
+- Use .gitignore to keep personal profiles out of version control
 
 ## Troubleshooting
 
-**Bot says it lacks certain capabilities?**
-- Core recommendations still work with just web search
-- You can manually add calendar events based on suggestions
-- Email templates can be provided for you to send yourself
+**Bot needs clarification on names?**
+- It's being helpful - you might know multiple Alexes
+- Add a detail: "Alex from work" or "Alex who likes hiking"
 
-**Recommendations seem generic?**
-- Make sure you've set up your profile: "Set up my profile"
-- Add more specific preferences: "I love spicy food and craft cocktails"
-- Mention your location: "I'm in Brooklyn"
+**Calendar events not working?**
+- Check if bot has calendar access
+- Use the manual format provided as backup
+- Ensure timezone is correct in timestamps
 
-**Can't find someone's profile?**
-- Check name variations: "Jon" vs "Jonathan"
-- Ask: "Show me who you know about"
-- Add them: "My friend Lisa loves hiking"
+**Recommendations too generic?**
+- Add more interests to profiles
+- Create custom interest profiles for niche hobbies
+- Mention specific preferences when asking
 
 ## Advanced Features
 
-### 🌤️ Weather-Aware Planning
-```
-You: "What should we do this weekend?"
-Bot: "I see rain is forecast for Saturday. Here are great indoor options..."
-```
+### Multi-Day Planning
+> **You:** "Plan a weekend trip with Sam"  
+> **Bot:** Creates interconnected calendar events with travel time, meal stops, and activities
 
-### ⏰ Smart Time Management
-```
-You: "I want to see a movie"
-Bot: "⚠️ You have dinner plans at 7pm. The 4:30pm showing would work perfectly..."
-```
+### Smart Booking Reminders
+> **Bot:** "⚠️ Hamilton tickets go on sale tomorrow at 10 AM - want me to remind you?"
 
-### 🚇 Transit Optimization
-```
-You: "Find something we can all get to easily"
-Bot: "Since Preston takes trains and Maya bikes, here are spots accessible by both..."
-```
+### Weather-Aware Alternatives
+> **Bot:** "Rain forecast for your hike. Indoor alternatives: climbing gym or the new nature exhibit at the Science Museum"
 
 ## Contributing
 

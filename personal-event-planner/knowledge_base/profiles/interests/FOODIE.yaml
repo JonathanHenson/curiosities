@@ -1,0 +1,27 @@
+Profile_Type: "Interest"
+Name: "FOODIE"
+Description: "Loves exploring restaurants, food festivals, and culinary experiences"
+
+Interests: 
+  - Restaurant openings and reviews
+  - Food festivals and markets
+  - Cooking classes and demonstrations
+  - Wine tastings and pairings
+  - Brewery and distillery tours
+  - Food truck gatherings
+  - Ethnic cuisine exploration
+  - Chef's table experiences
+
+Preferred_Venues:
+  - New and trending restaurants
+  - Farmers markets
+  - Food halls
+  - Culinary schools
+  - Wineries and breweries
+  - Specialty food shops
+
+Budget: "Moderate to high ($30-200 per person)"
+Distance_Willing_To_Travel: "45 minutes for exceptional food"
+Physical_Activity_Level: "Low"
+Weather_Preferences: "Flexible, enjoys outdoor food events"
+Avoids: "Chain restaurants, fast food"

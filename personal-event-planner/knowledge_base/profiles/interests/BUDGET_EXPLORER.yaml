@@ -1,0 +1,27 @@
+Profile_Type: "Interest"
+Name: "BUDGET_EXPLORER"
+Description: "Seeks free and low-cost activities and experiences"
+
+Interests:
+  - Free museum days
+  - Public lectures and talks
+  - Community events and festivals
+  - Library programs
+  - Free outdoor concerts
+  - Street fairs and parades
+  - Volunteer opportunities
+  - Public parks and gardens
+  - Free walking tours
+
+Preferred_Venues:
+  - Public spaces
+  - Libraries
+  - Community centers
+  - Parks and gardens
+  - Free admission venues
+
+Budget: "Minimal ($0-20)"
+Distance_Willing_To_Travel: "Public transport accessible"
+Physical_Activity_Level: "Flexible"
+Weather_Preferences: "Adaptable"
+Avoids: "Expensive ticketed events, high-end venues"

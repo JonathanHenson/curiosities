@@ -1,0 +1,28 @@
+Profile_Type: "Interest"
+Name: "ADVENTURER"
+Description: "Loves outdoor activities and physical challenges"
+
+Interests:
+  - Hiking and trail running
+  - Rock climbing and bouldering
+  - Kayaking and paddleboarding
+  - Mountain biking
+  - Camping and backpacking
+  - Outdoor fitness classes
+  - Nature photography
+  - Geocaching
+  - Skiing/snowboarding (seasonal)
+
+Preferred_Venues:
+  - State and national parks
+  - Hiking trails
+  - Climbing gyms
+  - Lakes and rivers
+  - Bike paths
+  - Outdoor recreation centers
+
+Budget: "Moderate ($20-100 per activity)"
+Distance_Willing_To_Travel: "Up to 2 hours"
+Physical_Activity_Level: "High"
+Weather_Preferences: "Enjoys all weather except severe storms"
+Avoids: "Crowded indoor spaces, passive entertainment"

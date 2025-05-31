@@ -1,0 +1,13 @@
+# RENAME THIS FILE TO DEFAULT_USER.yaml AFTER FILLING IN YOUR INFO
+# Or let the AI assistant help you create it
+
+# Your default identity (used when you say "I" or "me")
+Default_User: YOUR_NAME_HERE
+
+# Map relationships to profile names
+Relationship_Map:
+  # Examples:
+  # - "my partner": PARTNER_NAME
+  # - "my best friend": FRIEND_NAME
+  # - "my mom": PARENT_NAME
+  # - "my coworker": COLLEAGUE_NAME

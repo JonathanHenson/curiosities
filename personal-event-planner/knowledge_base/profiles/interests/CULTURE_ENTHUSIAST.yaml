@@ -1,0 +1,28 @@
+Profile_Type: "Interest"
+Name: "CULTURE_ENTHUSIAST"
+Description: "Enjoys arts, museums, theater, and cultural experiences"
+
+Interests:
+  - Art galleries and exhibitions
+  - Museums (art, history, science)
+  - Theater and performing arts
+  - Live music and concerts
+  - Poetry readings and literary events
+  - Film festivals and indie cinema
+  - Cultural festivals and celebrations
+  - Historical tours and landmarks
+  - Architecture walks
+
+Preferred_Venues:
+  - Museums and galleries
+  - Theaters and concert halls
+  - Independent cinemas
+  - Bookstores with event spaces
+  - Cultural centers
+  - Historic sites
+
+Budget: "Flexible ($0-150)"
+Distance_Willing_To_Travel: "Within metro area"
+Physical_Activity_Level: "Low to moderate"
+Weather_Preferences: "Prefers indoor activities"
+Avoids: "Loud bars/clubs, sports events"

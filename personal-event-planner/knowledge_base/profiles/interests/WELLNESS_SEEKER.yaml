@@ -1,0 +1,27 @@
+Profile_Type: "Interest"
+Name: "WELLNESS_SEEKER"
+Description: "Focuses on health, mindfulness, and well-being activities"
+
+Interests:
+  - Yoga and meditation classes
+  - Spa and wellness treatments
+  - Nature walks and forest bathing
+  - Wellness workshops and retreats
+  - Healthy cooking classes
+  - Sound baths and healing sessions
+  - Mindfulness events
+  - Holistic health fairs
+  - Tai chi and qigong
+
+Preferred_Venues:
+  - Yoga studios
+  - Spas and wellness centers
+  - Parks and nature areas
+  - Meditation centers
+  - Health food stores with classes
+
+Budget: "Moderate to high ($20-150)"
+Distance_Willing_To_Travel: "1 hour"
+Physical_Activity_Level: "Low to moderate"
+Weather_Preferences: "Enjoys outdoor meditation/yoga"
+Avoids: "Loud, chaotic environments, competitive activities"

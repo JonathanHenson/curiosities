@@ -1,0 +1,11 @@
+# Ignore personal profiles but keep the structure
+knowledge_base/profiles/personal/*.yaml
+knowledge_base/profiles/groups/*.yaml
+knowledge_base/profiles/settings/DEFAULT_USER.yaml
+
+# Keep the template
+!knowledge_base/profiles/settings/DEFAULT_USER_TEMPLATE.yaml
+
+# OS files
+.DS_Store
+Thumbs.db

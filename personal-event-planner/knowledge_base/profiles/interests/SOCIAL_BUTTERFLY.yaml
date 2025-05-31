@@ -1,0 +1,28 @@
+Profile_Type: "Interest"
+Name: "SOCIAL_BUTTERFLY"
+Description: "Thrives on social interaction and group activities"
+
+Interests:
+  - Nightlife and live music
+  - Comedy shows
+  - Trivia nights
+  - Dance clubs and social dancing
+  - Networking events
+  - Speed dating and singles events
+  - Group sports and games
+  - Karaoke nights
+  - Bar crawls and tastings
+
+Preferred_Venues:
+  - Bars and lounges
+  - Music venues
+  - Comedy clubs
+  - Social halls
+  - Rooftop bars
+  - Event spaces
+
+Budget: "Moderate ($30-100)"
+Distance_Willing_To_Travel: "Within city/downtown"
+Physical_Activity_Level: "Moderate"
+Weather_Preferences: "Any"
+Avoids: "Solo activities, quiet environments"

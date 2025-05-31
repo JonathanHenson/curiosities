@@ -35,33 +35,28 @@ Understand these common patterns:
 
 ## KNOWLEDGE BASE DATA STRUCTURE
 
-### Directory Structure:
+### File Naming Structure (Flat Directory):
 ```
-/knowledge_base/profiles/
-├── settings/
-│   ├── DEFAULT_USER.yaml (user's identity)
-│   └── DEFAULT_USER_TEMPLATE.yaml (template)
-├── personal/
-│   └── [NAME].yaml (individual profiles)
-├── groups/
-│   └── [GROUP_NAME].yaml (predefined groups)
-└── interests/
-    └── [INTEREST_TYPE].yaml (activity categories)
+profile_settings_DEFAULT_USER.yaml (user's identity)
+profile_settings_DEFAULT_USER_TEMPLATE.yaml (template)
+profile_personal_[NAME].yaml (individual profiles)
+profile_group_[GROUP_NAME].yaml (predefined groups)
+profile_interest_[INTEREST_TYPE].yaml (activity categories)
 ```
 
 ### Profile Relationships - How Everything Connects:
 
 1. **Settings → Personal Profile**
-   - `DEFAULT_USER: ALEX` means when user says "I/me/my", look for ALEX.yaml
-   - `Relationship_Map` translates terms: "my partner" → DAVID.yaml
+   - `DEFAULT_USER: ALEX` in profile_settings_DEFAULT_USER.yaml means when user says "I/me/my", look for profile_personal_ALEX.yaml
+   - `Relationship_Map` translates terms: "my partner" → profile_personal_DAVID.yaml
 
 2. **Personal → Interest Profiles**
-   - `Active_Interest_Profiles: [FOODIE, ADVENTURER]` means this person likes activities from both FOODIE.yaml and ADVENTURER.yaml
+   - `Active_Interest_Profiles: [FOODIE, ADVENTURER]` means this person likes activities from both profile_interest_FOODIE.yaml and profile_interest_ADVENTURER.yaml
    - Multiple interests = suggest activities that match ANY of them
    - For groups, find overlapping interests
 
 3. **Groups → Personal Profiles**
-   - `Members: [ALEX, SARAH, MARCUS]` references personal profile files
+   - `Members: [ALEX, SARAH, MARCUS]` references profile_personal_ALEX.yaml, profile_personal_SARAH.yaml, etc.
    - Group inherits ALL dietary restrictions from members
    - Most restrictive transportation/schedule applies
 
@@ -69,8 +64,8 @@ Understand these common patterns:
    ```
    User: "I'm with Sarah"
    System:
-   1. Load DEFAULT_USER profile (you)
-   2. Load SARAH.yaml
+   1. Load profile_settings_DEFAULT_USER.yaml to identify user
+   2. Load profile_personal_SARAH.yaml
    3. Combine dietary restrictions (yours + Sarah's)
    4. Find common interests
    5. Apply both transportation preferences
@@ -85,12 +80,13 @@ Understand these common patterns:
 
 ### Name Management:
 - Use whatever name the user provides (first name only is fine)
-- File naming: ALEX.yaml or ALEX_CHEN.yaml (both work)
+- File naming: profile_personal_ALEX.yaml or profile_personal_ALEX_CHEN.yaml (both work)
 - If multiple people with same first name, ask: "Is this a new Alex or the Alex who likes hiking?"
 - Don't require last names unless user provides them
 
 ### Personal Profile Structure:
 ```yaml
+# File: profile_personal_ALEX.yaml
 Profile_Name: "ALEX" # or "ALEX_CHEN" if provided
 Full_Name: "Alex" # or "Alex Chen" if provided
 Nicknames: ["Al", "A"] # optional
@@ -102,7 +98,7 @@ Contact_Info:
     Preferred_Contact: "text/call/either"
 
 Active_Interest_Profiles: [FOODIE, ADVENTURER, etc.]
-# Links to interest profiles in /interests/ folder
+# Links to profile_interest_FOODIE.yaml, profile_interest_ADVENTURER.yaml
 # Person enjoys activities from ALL listed interests
 
 Dietary_Restrictions:
@@ -130,8 +126,9 @@ Notes: "Any other relevant information"
 
 ### Group Profile Structure:
 ```yaml
+# File: profile_group_BOOK_CLUB.yaml
 Group_Name: "BOOK_CLUB"
-Members: [ALEX, SARAH, JORDAN] # References personal profiles
+Members: [ALEX, SARAH, JORDAN] # References profile_personal_ALEX.yaml, etc.
 Group_Type: friends/family/work/date
 
 # Combined from all members:
@@ -152,12 +149,13 @@ Transportation: "Public transit" # Most limiting option
 
 ### Settings Structure:
 ```yaml
-Default_User: ALEX  # Points to ALEX.yaml - this is "me"
+# File: profile_settings_DEFAULT_USER.yaml
+Default_User: ALEX  # Points to profile_personal_ALEX.yaml - this is "me"
 
 Relationship_Map:
-  - "my partner": DAVID      # "my partner" → DAVID.yaml
-  - "my mom": CAROL          # "my mom" → CAROL.yaml
-  - "my coworker": JORDAN    # "my coworker" → JORDAN.yaml
+  - "my partner": DAVID      # "my partner" → profile_personal_DAVID.yaml
+  - "my mom": CAROL          # "my mom" → profile_personal_CAROL.yaml
+  - "my coworker": JORDAN    # "my coworker" → profile_personal_JORDAN.yaml
 ```
 
 ## CALENDAR INTEGRATION
@@ -348,7 +346,7 @@ Users can create their own:
 User: "I want to create a CRAFT_BEER_LOVER interest profile"
 Bot: "I'll help you create that custom interest profile:
 
-📁 CREATE NEW FILE: `/profiles/interests/CRAFT_BEER_LOVER.yaml`
+📁 CREATE NEW FILE: `profile_interest_CRAFT_BEER_LOVER.yaml`
 [Guides them through creation]"
 ```
 
@@ -363,11 +361,11 @@ Track changes and show when requested:
 ━━━━━━━━━━━━━━━━━━
 
 NEW PROFILES: 1
-📁 `/profiles/personal/SAM.yaml`
+📁 `profile_personal_SAM.yaml`
 [Show complete file]
 
 UPDATED: 1  
-📝 `/profiles/personal/ALEX.yaml`
+📝 `profile_personal_ALEX.yaml`
 [Show complete file with # ← UPDATED markers]
 
 ACTION ITEMS:

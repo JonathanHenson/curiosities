@@ -55,8 +55,8 @@ For Claude Projects and similar systems where you can't edit files directly:
 
 ### Simple Names
 The system uses whatever name you provide:
-- "Sam" → creates SAM.yaml
-- "Sam Smith" → creates SAM_SMITH.yaml  
+- "Sam" → creates profile_personal_SAM.yaml
+- "Sam Smith" → creates profile_personal_SAM_SMITH.yaml  
 - Both work perfectly fine
 - No last name required
 
@@ -70,10 +70,10 @@ Bot: "Which Alex - your coworker who's vegetarian, or your cousin who loves sush
 ## How Profile Components Connect
 
 ### Profile Relationships:
-1. **Settings → Personal Profile**: `DEFAULT_USER: ALEX` means when you say "I/me/my", the system looks for ALEX.yaml
-2. **Relationship Mapping**: `"my partner": DAVID` means "my partner" refers to DAVID.yaml
-3. **Personal → Interest Profiles**: `Active_Interest_Profiles: [FOODIE, ADVENTURER]` links to those interest files
-4. **Groups → Personal Profiles**: `Members: [ALEX, SARAH, MARCUS]` references those personal profiles
+1. **Settings → Personal Profile**: `DEFAULT_USER: ALEX` in profile_settings_DEFAULT_USER.yaml means when you say "I/me/my", the system looks for profile_personal_ALEX.yaml
+2. **Relationship Mapping**: `"my partner": DAVID` means "my partner" refers to profile_personal_DAVID.yaml
+3. **Personal → Interest Profiles**: `Active_Interest_Profiles: [FOODIE, ADVENTURER]` links to profile_interest_FOODIE.yaml and profile_interest_ADVENTURER.yaml
+4. **Groups → Personal Profiles**: `Members: [ALEX, SARAH, MARCUS]` references profile_personal_ALEX.yaml, profile_personal_SARAH.yaml, etc.
 5. **Combined Restrictions**: Groups inherit ALL dietary/accessibility needs from members
 
 ### How It Works in Practice:
@@ -104,13 +104,13 @@ You: "I love trying new restaurants, hiking on weekends, and going to art museum
 
 Bot: "Perfect! I've created your profile. Here's what to save:
 
-📁 CREATE NEW FILE: /profiles/settings/DEFAULT_USER.yaml
+📁 CREATE NEW FILE: profile_settings_DEFAULT_USER.yaml
 
 ```yaml
 Default_User: ALEX
 ```
 
-📁 CREATE NEW FILE: /profiles/personal/ALEX.yaml
+📁 CREATE NEW FILE: profile_personal_ALEX.yaml
 
 ```yaml
 Profile_Name: "ALEX"
@@ -178,7 +178,7 @@ You: "My coworker Jordan is vegan and really into yoga"
 
 Bot: "I've created a profile for Jordan:
 
-📁 CREATE NEW FILE: `/profiles/personal/JORDAN.yaml`
+📁 CREATE NEW FILE: `profile_personal_JORDAN.yaml`
 ```yaml
 Profile_Name: "JORDAN"
 Full_Name: "Jordan"
@@ -232,7 +232,7 @@ You: "I want to create a profile for craft beer enthusiasts"
 
 Bot: "I'll help you create a custom interest profile:
 
-📁 CREATE NEW FILE: `/profiles/interests/CRAFT_BEER_ENTHUSIAST.yaml`
+📁 CREATE NEW FILE: `profile_interest_CRAFT_BEER_ENTHUSIAST.yaml`
 ```yaml
 Profile_Type: "Interest"
 Name: "CRAFT_BEER_ENTHUSIAST"
@@ -270,14 +270,14 @@ Bot: "Here's everything from our conversation:
 ━━━━━━━━━━━━━━━━━━
 
 NEW PROFILES: 2
-1️⃣ `/profiles/personal/JORDAN.yaml` - vegan coworker who does yoga
-2️⃣ `/profiles/personal/PAT.yaml` - movie buddy, lactose issues
+1️⃣ `profile_personal_JORDAN.yaml` - vegan coworker who does yoga
+2️⃣ `profile_personal_PAT.yaml` - movie buddy, lactose issues
 
 CUSTOM INTERESTS: 1
-1️⃣ `/profiles/interests/CRAFT_BEER_ENTHUSIAST.yaml`
+1️⃣ `profile_interest_CRAFT_BEER_ENTHUSIAST.yaml`
 
 UPDATES: 1
-1️⃣ `/profiles/personal/SAM.yaml` - added hiking preferences
+1️⃣ `profile_personal_SAM.yaml` - added hiking preferences
 
 ACTION ITEMS:
 □ Book movie tickets for 7:30 PM showing
@@ -295,18 +295,14 @@ The system uses YAML files to store:
 - **Group Profiles**: Common configurations of people you hang out with
 - **Settings**: Your default identity and relationship mappings
 
-### File Structure:
+### File Structure (Flat Directory):
 ```
-/knowledge_base/profiles/
-├── settings/
-│   ├── DEFAULT_USER.yaml (identifies who "I/me" refers to)
-│   └── DEFAULT_USER_TEMPLATE.yaml (template for new users)
-├── personal/
-│   └── [NAME].yaml (individual profiles like ALEX.yaml, SARAH.yaml)
-├── groups/
-│   └── [GROUP_NAME].yaml (predefined groups like BOOK_CLUB.yaml)
-└── interests/
-    └── [INTEREST_TYPE].yaml (FOODIE.yaml, ADVENTURER.yaml, etc.)
+knowledge_base/
+├── profile_settings_DEFAULT_USER.yaml (identifies who "I/me" refers to)
+├── profile_settings_DEFAULT_USER_TEMPLATE.yaml (template for new users)
+├── profile_personal_[NAME].yaml (individual profiles like profile_personal_ALEX.yaml)
+├── profile_group_[GROUP_NAME].yaml (predefined groups like profile_group_BOOK_CLUB.yaml)
+└── profile_interest_[INTEREST_TYPE].yaml (FOODIE, ADVENTURER, etc.)
 ```
 
 ## Calendar Integration Details

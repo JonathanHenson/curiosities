@@ -1,0 +1,37 @@
+# Interest Profile Template
+# Copy and rename to profile_interest_INTERESTNAME.yaml
+
+Profile_Type: "Interest"
+Name: "INTEREST_NAME"  # e.g., FOODIE, ADVENTURER
+Description: "Brief description of this interest category"
+
+# Specific interests within this category
+Interests:
+  - Interest or activity 1
+  - Interest or activity 2
+  - Interest or activity 3
+  # Add as many as relevant
+
+# Where these activities typically happen
+Preferred_Venues:
+  - Venue type 1
+  - Venue type 2
+  - Venue type 3
+
+# Planning parameters
+Budget: "Typical range ($X-Y per person)"
+Distance_Willing_To_Travel: "Local/Regional/Day trip/Weekend trip"
+Physical_Activity_Level: "Low/Moderate/High/Variable"
+Weather_Preferences: "Any/Fair weather only/Season-specific"
+Typical_Duration: "Quick (1hr)/Half-day/Full-day/Multi-day"
+Social_Style: "Solo/Couples/Small groups/Large groups/Flexible"
+
+# What doesn't fit this interest
+Avoids: "Opposite activities or environments"
+
+# Optional specialized fields
+Best_Time_Of_Day: ""  # Morning/Afternoon/Evening/Night
+Skill_Level_Required: "None/Beginner/Intermediate/Expert/All levels"
+Equipment_Needed: ""  # If applicable
+Booking_Requirements: ""  # "Advance reservations", "Walk-in friendly"
+Cost_Notes: ""  # "Often has deals on Tuesdays"

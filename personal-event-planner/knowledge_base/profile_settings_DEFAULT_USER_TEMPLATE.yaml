@@ -1,13 +1,74 @@
-# RENAME THIS FILE TO DEFAULT_USER.yaml AFTER FILLING IN YOUR INFO
-# Or let the AI assistant help you create it
+# RENAME THIS FILE TO profile_settings_DEFAULT_USER.yaml AFTER FILLING IN
+# This identifies who "I/me/my" refers to and sets system permissions
 
 # Your default identity (used when you say "I" or "me")
-Default_User: YOUR_NAME_HERE
+Default_User: YOUR_NAME_HERE  # Must match a profile_personal_NAME.yaml file
 
 # Map relationships to profile names
 Relationship_Map:
-  # Examples:
+  # Examples - uncomment and modify as needed:
   # - "my partner": PARTNER_NAME
+  # - "my spouse": SPOUSE_NAME
   # - "my best friend": FRIEND_NAME
-  # - "my mom": PARENT_NAME
+  # - "my mom": MOM_NAME
+  # - "my dad": DAD_NAME
+  # - "my sibling": SIBLING_NAME
   # - "my coworker": COLLEAGUE_NAME
+  # - "my boss": BOSS_NAME
+  # - "my assistant": ASSISTANT_NAME
+  # - "my therapist": THERAPIST_NAME
+
+# Mode Settings for Identity Switching and Delegation
+Mode_Settings:
+  Allow_Identity_Switching: true  # Let others use system as themselves
+  Allow_Delegation_Planning: true  # Let others plan on your behalf
+  Privacy_Protection: "granular"   # Options: strict, granular, custom
+  
+  # Locked Mode Settings (for secure shared sessions)
+  Locked_Mode:
+    Enabled: false  # Set true to lock this session
+    Locked_To: ""   # Name of permanent delegate
+    Disable_All_Switching: true  # Cannot change modes
+    
+  # Email settings for notifications
+  Notification_Settings:
+    Send_Override_Alerts: true      # When soft preferences overridden
+    Send_Session_Summaries: true    # Summary after delegation sessions
+    Send_Permission_Warnings: true  # Before sharing sensitive info
+    Send_Contact_Additions: true    # When contacts added
+    Email_Format: "text"  # Options: text, html
+    
+  # Security settings
+  Security:
+    Require_Verification: false  # Ask for confirmation
+    Session_Timeout_Minutes: 30  # Auto-logout for identity switch
+    Log_All_Mode_Changes: true   # Track mode switches
+    Log_All_Access: true         # Track information access
+    Require_Confirmation_For_Sensitive_Shares: true
+
+# Contact Management Permissions
+Contact_Management:
+  Who_Can_Add_Contacts:
+    During_Identity_Switch: "own_only"  # Can only add/edit own info
+    During_Delegation: 
+      Default: false  # Most people cannot add contacts
+      With_Permission: []  # List names who can add with approval
+      Without_Approval: []  # List names who can add freely
+      Can_Suggest: true  # Others can suggest additions
+  
+  Contact_Addition_Rules:
+    Notify_On_New_Contact: true
+    Require_Confirmation_Email: true
+    Allow_Contact_Suggestions: true
+    Auto_Approve_From: []  # List of fully trusted people
+
+# Global boundaries that apply to everyone
+Global_Hard_Boundaries:
+  - "No sharing of medical details without explicit permission"
+  - "No financial commitments over $500"
+  - "No access to private notes without selective permission"
+  - "No adding contacts without appropriate permission level"
+  - "No sharing contact information without consent"
+
+  # profile_settings_DEFAULT_USER.yaml
+Default_User: YOUR_NAME

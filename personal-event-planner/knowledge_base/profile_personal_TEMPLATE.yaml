@@ -1,0 +1,179 @@
+# Personal Profile Template
+# Copy and rename to profile_personal_YOURNAME.yaml
+
+Profile_Name: "NAME"  # Should match filename
+Full_Name: "Full Name Here"  # Optional but helpful
+Nicknames: []  # Optional: ["Nick", "N", "Nickname"]
+
+# Contact Information
+Contact_Info:
+  Email:
+    Primary: ""  # your@email.com
+    Work: ""     # Optional work email
+  Phone:
+    Mobile: ""   # Optional
+    Preferred_Contact: "text"  # Options: text, call, either
+  # Contact Sharing Permissions
+  Sharing_Permissions:
+    Can_Share_With: []  # Who can see your contact info
+    Never_Share_With: []  # Explicitly blocked
+    Ask_Before_Sharing: true  # Require confirmation
+
+# Link to Interest Profiles (see profile_interest_*.yaml files)
+Active_Interest_Profiles: []  # e.g., [FOODIE, ADVENTURER, CULTURE_ENTHUSIAST]
+
+# Dietary Information
+Dietary_Restrictions:
+  Type: omnivore  # Options: omnivore, vegetarian, vegan, pescatarian, kosher, halal
+  Medical_Conditions: []  # CANNOT BE OVERRIDDEN - allergies, intolerances
+  Specific_Avoids: []  # Foods to avoid but not medical
+  Preferences: ""  # Natural language like "loves spicy, hates mushrooms"
+
+# Environment Preferences
+Environment_Avoids:
+  Medical_Needs: []  # CANNOT BE OVERRIDDEN ["wheelchair accessible", "no strobes"]
+  Strong_Preferences: []  # Important ["no smoking", "quiet spaces"]
+  Soft_Preferences: []  # Nice to have ["outdoor seating", "not too crowded"]
+
+# Transportation
+Transportation_Preferences:
+  Preferred: ""  # "public transit", "bike", "walk", "drive"
+  Avoids: ""     # "highway driving", "buses"
+  Accessibility_Needs: []  # CANNOT BE OVERRIDDEN
+  Notes: ""      # "has car but prefers not to drive downtown"
+
+# Schedule
+Schedule_Preferences:
+  Typical_Availability: ""  # "weekends and weekday evenings"
+  Blackout_Times: ""  # "Tuesday evenings" (don't need to say why)
+  Best_Times: ""      # "mornings for active stuff, evenings for social"
+
+# THREE-LEVEL NOTE SYSTEM
+Private_Notes: | 
+  # NEVER shared unless explicitly given permission
+  # Examples of what goes here:
+  # - Health conditions (beyond basic allergies)
+  # - Mental health (therapy, recovery, medications)
+  # - Relationship issues (divorce, breakups, conflicts)
+  # - Family situations (illness, custody, estrangement)
+  # - Financial situation (job loss, debt, budgets)
+  # - Personal struggles or challenges
+  # - Specific people/places to avoid and why
+
+# Selective Sharing - Different people see different information
+Selective_Share_Notes:
+  # CLOSE_FRIEND_NAME: |
+  #   In recovery - 6 months sober (so you understand no bars)
+  #   Dad is ill (might need to cancel plans suddenly)
+  #   
+  # PARTNER_NAME: |
+  #   All private notes shared - full transparency
+  #   
+  # ASSISTANT_NAME: |
+  #   Thursday 5pm always blocked (recurring appointment)
+  #   Avoid downtown area for meetings
+  #   Keep event budgets under $100
+
+# System use only - leave empty
+System_Insights: | 
+  # AUTO-GENERATED - DO NOT EDIT
+  # System creates these from private + selective notes
+
+# Safe to share with anyone
+Public_Notes: | 
+  # Examples of what goes here:
+  # - General interests and hobbies
+  # - Positive life events (promotion, graduation)
+  # - General preferences (loves Thai food)
+  # - Public accomplishments
+
+# PERMISSION SETTINGS
+Privacy_Settings:
+  # What delegation mode can see by default
+  Can_View_When_Delegating: [dietary, interests, schedule, transportation, public_notes]
+  Cannot_View: [private_notes, medical_details, system_insights]
+  
+  # Person-specific viewing permissions
+  Selective_View_Permissions:
+    # FRIEND_NAME: 
+    #   Access_Level: "medium"  # Options: basic, medium, high, full
+    #   Can_See: [selective_share_notes, public_notes]
+    #   Sensitivity_Warning: true  # Warn before sharing sensitive info
+    #   
+    # PARTNER_NAME:
+    #   Access_Level: "full"
+    #   Can_See: [everything]
+    #   Sensitivity_Warning: false  # No warnings needed
+
+# DELEGATION PERMISSIONS - Who can plan on your behalf
+Delegation_Permissions:
+  Allowed_Planners: []  # List names of people who can plan for you
+  
+  # Person-specific delegation permissions
+  Planner_Permissions:
+    # FRIEND_NAME:
+    #   Can_Know: [some_personal_context, dietary_needs]
+    #   Can_Override: [activity_types, restaurants]
+    #   Cannot_Override: [medical_dietary, schedule_blocks]
+    #   # Contact management
+    #   Can_Add_Contacts: false
+    #   Can_Suggest_Contacts: true
+    #   Can_Update_Contacts: false
+    #   Special_Access: "Friend-level planning"
+    #   
+    # ASSISTANT_NAME:
+    #   Can_Know: [schedule_blocks, budget_ranges, logistics]
+    #   Can_Override: [meeting_locations, restaurant_types]
+    #   Cannot_Override: [personal_boundaries, medical_needs]
+    #   # Contact management
+    #   Can_Add_Contacts: true
+    #   Contact_Addition_Requires_Approval: true
+    #   Can_Update_Contacts: "own_additions_only"
+    #   Special_Access: "Professional access with restricted contact management"
+    #   
+    # PARTNER_NAME:
+    #   Can_Know: [everything]
+    #   Can_Override: [most_preferences]
+    #   Cannot_Override: [medical_safety_only]
+    #   # Contact management
+    #   Can_Add_Contacts: true
+    #   Contact_Addition_Requires_Approval: false
+    #   Can_Update_Contacts: true
+    #   Special_Access: "Full transparency and management rights"
+
+  # Override notification settings
+  Override_Notifications:
+    Email: ""  # your@email.com
+    Text: ""   # Optional SMS
+    Urgent_Contact: ""  # Name of person for emergencies
+  
+  # Boundaries that can NEVER be overridden by anyone
+  Hard_Boundaries: 
+    Medical: []  # ["no alcohol - medication", "severe nut allergy", "wheelchair access required"]
+    Personal: []  # ["no gambling venues", "no MLM events", "no contact with EX_NAME"]
+    Financial: []  # ["max $200 without approval", "no loans or investments"]
+  
+  # Preferences that can be overridden with notification
+  Soft_Boundaries:
+    Dietary: []  # ["vegetarian preference - okay for special occasions"]
+    Schedule: []  # ["prefer not before 10am", "prefer weekends"]
+    Environment: []  # ["prefer quiet venues", "like outdoor seating"]
+
+# Identity Switch Settings - When others use your system
+Identity_Switch_Permissions:
+  Can_Switch_To_Me: []  # Who can temporarily become this profile
+  Require_Passcode: false  # Add security if wanted
+  Auto_Logout_Minutes: 30  # Automatic return to owner
+  Log_All_Actions: true    # Track what they do
+  # What they can do while switched to this identity
+  While_Switched_Permissions:
+    Can_Update_Own_Info: true  # Edit their own profile
+    Can_Add_Others: false      # Cannot add new profiles
+    Can_See_My_Contacts: false # Cannot browse your contacts
+    Can_Modify_My_Contacts: false  # Cannot edit your contacts
+    Can_See_My_Private_Notes: false  # Privacy protected
+
+# Optional fields
+Status: "active"  # Options: active, inactive, pending
+Last_Updated: ""  # Date of last major update
+Created_Date: ""  # When profile was created

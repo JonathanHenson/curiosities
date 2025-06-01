@@ -1,10 +1,15 @@
-# Ignore personal profiles but keep the structure
-knowledge_base/profiles/personal/*.yaml
-knowledge_base/profiles/groups/*.yaml
-knowledge_base/profiles/settings/DEFAULT_USER.yaml
+# Ignore personal profiles but keep templates
+knowledge_base/profile_personal/*.yaml
+!knowledge_base/profile_personal_TEMPLATE.yaml
 
-# Keep the template
-!knowledge_base/profiles/settings/DEFAULT_USER_TEMPLATE.yaml
+knowledge_base/profile_group/*.yaml
+!knowledge_base/profile_group_TEMPLATE.yaml
+
+knowledge_base/profile_settings/DEFAULT_USER.yaml
+!knowledge_base/profile_settings/DEFAULT_USER_TEMPLATE.yaml
+
+# Keep all interest profiles (they're not personal)
+!knowledge_base/profile_interest_*.yaml
 
 # OS files
 .DS_Store

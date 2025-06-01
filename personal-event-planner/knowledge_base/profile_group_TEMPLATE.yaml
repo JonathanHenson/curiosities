@@ -1,0 +1,46 @@
+# Group Profile Template
+# Copy and rename to profile_group_GROUPNAME.yaml
+
+Group_Name: "GROUP_NAME"  # Match filename
+Members: []  # List of profile names [ALEX, SARAH, MARCUS]
+Group_Type: friends  # Options: friends, family, work, social, date, custom
+
+# Auto-calculated from member profiles but can override
+Dietary_Restrictions_Combined:
+  Must_Accommodate: []  # All medical/allergy needs from members
+  Preferences_To_Consider: []  # Individual preferences to consider
+
+Environment_Avoids_Combined:
+  Critical: []  # Medical/accessibility needs from any member
+  Preferences: []  # Comfort preferences to consider
+
+# Intersection of member interests
+Common_Interests: []  # Shared interests among all members
+Mixed_Interests: []   # Union of all interests for variety
+
+Schedule_Constraints: ""  # Most restrictive schedule
+Transportation: ""  # Most limiting transport option
+Typical_Duration: ""  # How long group activities usually last
+
+# Group notes follow same privacy structure
+Private_Notes: |
+  # Sensitive group dynamics
+  # Example: Jordan and Sam don't get along
+  
+Selective_Share_Notes:
+  # PLANNER_NAME: |
+  #   What they should know about group dynamics
+  
+Public_Notes: |
+  # General group information
+  # Example: Monthly book club, loves trying new restaurants
+
+# Group-specific settings
+Group_Settings:
+  Default_Planner: ""  # Who usually organizes
+  Notification_List: []  # Who to notify for group events
+  Require_All_Available: false  # Need everyone vs. majority
+  
+Privacy_Settings:
+  Can_View_When_Delegating: [members, interests, public_notes, dietary]
+  Cannot_View: [private_notes, member_personal_details]

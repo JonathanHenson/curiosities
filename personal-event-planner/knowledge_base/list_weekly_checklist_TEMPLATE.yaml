@@ -1,0 +1,134 @@
+List_Name: "Weekly Household Planning Checklist"
+List_Type: "checklist_and_supplies"
+Last_Updated: "2024-01-15"
+Update_Schedule: "Review every Sunday evening"
+
+# WEEKLY CHECK ITEMS - Check if supplied/working
+Check_These_Items:
+  Kitchen_Basics:
+    - Paper towels (need 2+ rolls)
+    - Dish soap (at least half bottle)
+    - Dishwasher pods (10+ remaining)
+    - Sponges (replace weekly)
+    - Trash bags (5+ remaining)
+    - Ziploc bags (sandwich & gallon)
+    - Aluminum foil / plastic wrap
+    
+  Bathroom_Supplies:
+    - Toilet paper (4+ rolls per bathroom)
+    - Hand soap (check all dispensers)
+    - Shampoo/conditioner levels
+    - Toothpaste (1 backup)
+    - Kids' bath supplies
+    
+  Cleaning_Supplies:
+    - Laundry detergent (enough for week)
+    - All-purpose cleaner
+    - Vacuum bags/emptied canister
+    - Mop pads/floor cleaner
+    
+  Kids_School_Supplies:
+    - Lunch boxes (clean/working)
+    - Water bottles (not lost)
+    - School snacks stocked
+    - Homework supplies (pencils, erasers)
+    - Permission slips signed
+    - Library books to return
+    
+  Pet_Supplies:
+    - Dog food (1+ week supply)
+    - Dog treats
+    - Poop bags
+    - Marshall's medications (if any)
+    
+  Safety_Checks:
+    - Batteries in smoke detectors (test monthly)
+    - Flashlights working
+    - First aid kit stocked
+    - Medications not expired
+
+# GET THESE ITEMS - Shopping list based on checks
+Regular_Shopping_List:
+  Household_Basics:
+    Always_Need:
+      - Paper towels (12-pack)
+      - Toilet paper (24-pack)
+      - Tissues (6-pack)
+      - Trash bags (13 & 30 gallon)
+      
+    Check_Stock_First:
+      - Dish soap
+      - Laundry detergent (HE, fragrance-free)
+      - Dishwasher pods
+      - Hand soap refills
+      - Cleaning supplies
+      
+  Pharmacy_Items:
+    - Children's Tylenol/Motrin
+    - Band-aids (fun designs for kids)
+    - Sunscreen (year-round in PNW)
+    - Allergy meds (seasonal)
+    
+  Kids_Specific:
+    Elizabeth:
+      - Hair ties (loses constantly)
+      - Cello rosin (check monthly)
+      
+    Owen:
+      - Lactaid pills
+      - Guitar picks (disappear mysteriously)
+      
+    Jude:
+      - Sensory-friendly socks (no seams)
+      - Quiet fidget toys for school
+      
+  Pet_Items:
+    - Dog food (Blue Buffalo large breed)
+    - Tennis balls (Marshall destroys them)
+    - Dog shampoo (monthly bath)
+
+# PLANNING NOTES FOR ASSISTANT
+Assistant_Instructions: |
+  When Angelica asks about household planning:
+  
+  1. WEEKLY ROUTINE:
+     - Sunday: Review checklist, make shopping list
+     - Monday/Tuesday: Best for Costco runs (less crowded)
+     - Wednesday: Target/grocery combined trip
+     - Friday: Final check before weekend
+  
+  2. SHOPPING STRATEGY:
+     - Costco: Bulk paper goods, dog food (monthly)
+     - Target: Kids items, pharmacy, some groceries
+     - Amazon Subscribe & Save: Recurring items
+     - Local store: Last-minute needs only
+  
+  3. BUDGET NOTES:
+     - Bulk buying saves money long-term
+     - Generic brands fine except: trash bags, dog food
+     - Stock up during sales: paper goods, cleaning supplies
+  
+  4. TIME-SAVERS:
+     - Keep running list on fridge
+     - Kids can add their own needs
+     - Photo of empty items for reference
+     - Standard Costco list saved in phone
+  
+  5. SPECIAL CONSIDERATIONS:
+     - Fragrance-free products (Jude sensitive)
+     - Eco-friendly when possible/practical
+     - Buy ahead for busy weeks (soccer season)
+
+Delegation_Notes: |
+  Angelica can:
+  - Make shopping runs independently
+  - Decide between brands (except specified)
+  - Adjust quantities based on sales
+  - Add items she notices we need
+  
+  Always check with Jonathan for:
+  - New/expensive items ($50+)
+  - Changes to kids' regular products
+  - Prescription medications
+
+Update_Reminder: "Review with Angelica monthly to refine"
